@@ -49,8 +49,8 @@ contract hotPotatoDice{
     
     function withdraw(uint quantity) public {
         assert(quantity <= moneyCanWithdraw[msg.sender] && (quantity+ownerBalance)<=(address(this).balance));
-        payable(msg.sender).transfer(quantity);
         moneyCanWithdraw[msg.sender]-=quantity;
+        payable(msg.sender).transfer(quantity);
         bonus[msg.sender]=1;
     }
     
